@@ -10,9 +10,11 @@ import {
   StreamChatModule,
   StreamAutocompleteTextareaModule,
 } from 'stream-chat-angular';
+import { MessageComponent } from './message/message.component';
+import { ChannelPreviewComponent } from './channel-preview/channel-preview.component';
 
 @NgModule({
-  declarations: [AppComponent, DemoComponent],
+  declarations: [AppComponent, DemoComponent, MessageComponent, ChannelPreviewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,4 +1,4 @@
-<div class="position-absolute top-50 start-50 translate-middle">
+<div style="margin: 0 0 0 30vw">
   <div id="root">
     <stream-channel-list></stream-channel-list>
     <stream-channel>
@@ -12,4 +12,16 @@
       </stream-thread>
     </stream-channel>
   </div>
+
+  <ng-template #customMessageTemplate let-message="message">
+    <app-message [message]="message"></app-message>
+  </ng-template>
+
+  <ng-template #customChannelPreviewTemplate let-channel="channel">
+    <app-channel-preview [channel]="channel"></app-channel-preview>
+  </ng-template>
 </div>
+
+<footer style="color: #ffffff; background: #212529; text-align: center">
+  &copy;Rohan Vasoya
+</footer>

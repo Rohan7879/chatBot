@@ -1,8 +1,17 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import {
   ChatClientService,
   ChannelService,
   StreamI18nService,
+  MessageContext,
+  CustomTemplatesService,
+  ChannelPreviewContext,
 } from 'stream-chat-angular';
 
 @Component({
@@ -11,10 +20,16 @@ import {
   styleUrls: ['./demo.component.css'],
 })
 export class DemoComponent {
+  @ViewChild('customMessageTemplate')
+  messageTemplate!: TemplateRef<MessageContext>;
+  @ViewChild('customChannelPreviewTemplate')
+  channelPreviewTemplate!: TemplateRef<ChannelPreviewContext>;
+
   constructor(
     private chatService: ChatClientService,
     private channelService: ChannelService,
-    private streamI18nService: StreamI18nService
+    private streamI18nService: StreamI18nService,
+    private customTemplatesService: CustomTemplatesService
   ) {
     const apiKey = 'dz5f4d5kzrue';
     const userId = 'shy-bird-4';
@@ -40,5 +55,12 @@ export class DemoComponent {
       type: 'messaging',
       id: { $eq: 'talking-about-angular' },
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.customTemplatesService.messageTemplate$.next(this.messageTemplate);
+    this.customTemplatesService.channelPreviewTemplate$.next(
+      this.channelPreviewTemplate
+    );
   }
 }
