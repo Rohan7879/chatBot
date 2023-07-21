@@ -1,8 +1,15 @@
 <div class="position-absolute top-50 start-50 translate-middle">
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-    laboriosam similique alias labore impedit expedita saepe, architecto sit
-    ducimus voluptates fugit neque. Pariatur obcaecati eum quod, temporibus
-    magni accusamus quisquam ex? Molestiae, commodi.
-  </p>
+  <div id="root">
+    <stream-channel-list></stream-channel-list>
+    <stream-channel>
+      <stream-channel-header></stream-channel-header>
+      <stream-message-list></stream-message-list>
+      <stream-notification-list></stream-notification-list>
+      <stream-message-input></stream-message-input>
+      <stream-thread name="thread">
+        <stream-message-list mode="thread"></stream-message-list>
+        <stream-message-input mode="thread"></stream-message-input>
+      </stream-thread>
+    </stream-channel>
+  </div>
 </div>
